@@ -27,6 +27,7 @@ public class App2
         DbUtils.loadDriver(JDBC_DRIVER);
         conn= DriverManager.getConnection(DB_URL,USER,PASS);
         //查询
+        //ResultSetHandler对象将结果集映射到Employee对象。
         ResultSetHandler<Employee> resultSetHandler=new BeanHandler(Employee.class);
         Employee emp= queryRunner.query(conn,"select * from employee where id=?",resultSetHandler,1);
         System.out.println(emp);
